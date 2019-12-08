@@ -1,5 +1,18 @@
 <nav class="navbar-header">
-  <span class="mat-button-wrapper">
-    <span>Material</span>
+  <span (click)="toRoutes()" class="mat-button-wrapper">
+    <span>Routes</span>
   </span>
+  <span (click)="toCompetitions()" class="mat-button-wrapper">
+    <span>Competitions</span>
+  </span>
+  <span (click)="toLogin()" *ngIf="this.signedIn == false" class="mat-button-wrapper">
+    <span>Login</span>
+  </span>
+  <span (click)="toRegister()" *ngIf="this.signedIn == false" class="mat-button-wrapper">
+    <span>Register</span>
+  </span>
+  <span (click)="toProfile()" *ngIf="this.signedIn == true" class="mat-button-wrapper">
+    <span>Profile</span>
+  </span>
+
 </nav>
