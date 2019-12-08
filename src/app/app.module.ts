@@ -17,6 +17,7 @@ import * as firebase from 'firebase/app';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import { LoginComponent } from './login/login.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -25,7 +26,8 @@ firebase.initializeApp(environment.firebaseConfig);
     AppComponent,
     ProfileComponent,
     PageNotFoundComponent,
-    NavigationComponent
+    NavigationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
