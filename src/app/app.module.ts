@@ -10,6 +10,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {RoutingController} from './RoutingController';
+import {MaterialModule} from './material-module';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    RoutingController,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
