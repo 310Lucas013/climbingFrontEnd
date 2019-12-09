@@ -21,3 +21,7 @@
 nav {
   display: block;
 }
+
+.right-side{
+  float: right;
+}

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -18,6 +17,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { LoginComponent } from './login/login.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -30,6 +30,7 @@ firebase.initializeApp(environment.firebaseConfig);
     LoginComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     RouterModule,
     ReactiveFormsModule,
@@ -45,6 +46,6 @@ firebase.initializeApp(environment.firebaseConfig);
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
 
 platformBrowserDynamic().bootstrapModule(AppModule);

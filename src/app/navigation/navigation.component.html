@@ -1,18 +1,18 @@
-<nav class="navbar-header">
+<nav class="navbar-header" >  <!--ng-controller="NavigationController"-->
+<!--  <span ng-repeat="navigator in navigators" (click)="{{navigator.method}}"-->
   <span (click)="toRoutes()" class="mat-button-wrapper">
     <span>Routes</span>
   </span>
   <span (click)="toCompetitions()" class="mat-button-wrapper">
     <span>Competitions</span>
   </span>
-  <span (click)="toLogin()" *ngIf="this.signedIn == false" class="mat-button-wrapper">
+  <span (click)="toLogin()" *ngIf="this.signedIn == false" class="mat-button-wrapper pull-right">
     <span>Login</span>
   </span>
-  <span (click)="toRegister()" *ngIf="this.signedIn == false" class="mat-button-wrapper">
+  <span (click)="toRegister()" *ngIf="this.signedIn == false" class="mat-button-wrapper pull-right">
     <span>Register</span>
   </span>
-  <span (click)="toProfile()" *ngIf="this.signedIn == true" class="mat-button-wrapper">
+  <span (click)="toProfile()" *ngIf="this.signedIn == true" class="mat-button-wrapper pull-right">
     <span>Profile</span>
   </span>
-
 </nav>
