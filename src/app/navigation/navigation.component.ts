@@ -11,7 +11,14 @@ export class NavigationComponent implements OnInit {
 
   signedIn: boolean;
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router) {
+    if (AuthService.isSignedIn()) {
+      this.signedIn = true;
+    } else {
+      this.signedIn = false;
+    }
+    console.log(AuthService.isSignedIn());
+  }
 
   ngOnInit() {
     if (AuthService.isSignedIn()) {
@@ -19,6 +26,7 @@ export class NavigationComponent implements OnInit {
     } else {
       this.signedIn = false;
     }
+    console.log(AuthService.isSignedIn());
   }
 
   toRoutes() {

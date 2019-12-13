@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
+import { Injectable } from '@angular/core';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor() {
+  }
 
   // Checks if user is signed in.
   static isSignedIn(): boolean {
@@ -15,6 +17,14 @@ export class AuthService {
       return true;
     } else {
       console.log('isSignedIn Method Reports: User is NOT Signed in');
+      return false;
+    }
+  }
+
+  currentUser(): boolean {
+    if (firebase.auth().currentUser) {
+      return true;
+    } else {
       return false;
     }
   }
@@ -72,5 +82,19 @@ export class AuthService {
       .catch(err => {
         console.log('Sign Out Unsuccesfull, User is NOT Logged out (succesfully)');
       });
+  }
+
+  persistenceLogin(email: string, password: string) {
+    return new Promise<any>((resolve, reject) => {
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+      .then(result => {
+        return firebase.auth().signInWithEmailAndPassword(email, password);
+      })
+      // .then(response => console.log(response))
+      // .then(user => new Promise((resolve, reject) => {
+      //   return this.doLogin(email, password);
+      // }))
+      .catch(error => alert(error));
+    });
   }
 }

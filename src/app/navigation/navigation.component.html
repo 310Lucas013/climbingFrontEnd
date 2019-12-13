@@ -6,13 +6,13 @@
   <span (click)="toCompetitions()" class="mat-button-wrapper">
     <span>Competitions</span>
   </span>
-  <span (click)="toLogin()" *ngIf="this.signedIn == false" class="mat-button-wrapper pull-right">
+  <span (click)="toLogin()" *ngIf="this.signedIn === false" class="mat-button-wrapper pull-right">
     <span>Login</span>
   </span>
-  <span (click)="toRegister()" *ngIf="this.signedIn == false" class="mat-button-wrapper pull-right">
+  <span (click)="toRegister()" *ngIf="this.signedIn === false" class="mat-button-wrapper pull-right">
     <span>Register</span>
   </span>
-  <span (click)="toProfile()" *ngIf="this.signedIn == true" class="mat-button-wrapper pull-right">
+  <span (click)="toProfile()" *ngIf="this.signedIn === true" class="mat-button-wrapper pull-right">
     <span>Profile</span>
   </span>
 </nav>
