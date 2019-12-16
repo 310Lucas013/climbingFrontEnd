@@ -21,6 +21,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {enableProdMode} from '@angular/core';
 import {AuthService} from './shared/serv/auth/auth.service';
 import { ClimbingroutesComponent } from './climbingroutes/climbingroutes.component';
+import {CommonModule} from '@angular/common';
 
 enableProdMode();
 firebase.initializeApp(environment.firebaseConfig);
@@ -37,6 +38,7 @@ firebase.initializeApp(environment.firebaseConfig);
   imports: [
     NgbModule,
     BrowserModule,
+    CommonModule,
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
