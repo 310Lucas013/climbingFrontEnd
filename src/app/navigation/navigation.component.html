@@ -1,16 +1,16 @@
 <nav class="navbar-header">  <!--ng-controller="NavigationController"-->
   <!--  <span ng-repeat="navigator in navigators" (click)="{{navigator.method}}"-->
 
-  <div *ngIf="this.signedIn === false else loggedIn">
+  <ng-template [ngIf]="this.signedIn === false">
     <span (click)="toLogin()" class="mat-button-wrapper pull-right">
       <span>Login</span>
     </span>
       <span (click)="toRegister()" class="mat-button-wrapper pull-right">
       <span>Register</span>
     </span>
-  </div>
+  </ng-template>
 
-  <ng-template #loggedIn>
+  <ng-template [ngIf]="this.signedIn === true">
     <span (click)="toRoutes()" class="mat-button-wrapper">
       <span>Routes</span>
     </span>

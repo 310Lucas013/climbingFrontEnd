@@ -7,14 +7,17 @@ import {Router} from '@angular/router';
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.css']
 })
-export class PageNotFoundComponent implements AfterViewInit {
+export class PageNotFoundComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) {
     // console.log(AuthService.isSignedIn());
     console.log(this.authService.currentUser());
+    if (!this.authService.currentUser()) {
+      this.router.navigate(['/login']);
+    }
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     // console.log(AuthService.isSignedIn());
     console.log(this.authService.currentUser());
     // if (!AuthService.isSignedIn()) {
