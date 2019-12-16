@@ -5,6 +5,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {LoginComponent} from './login/login.component';
 import {NavigationComponent} from './navigation/navigation.component';
 import {ClimbingroutesComponent} from './climbingroutes/climbingroutes.component';
+import {CompetitionsComponent} from './competitions/competitions.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/profile', pathMatch: 'full'},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'navigation', component: NavigationComponent},
   {path: 'routes', component: ClimbingroutesComponent},
+  {path: 'competitions', component: CompetitionsComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
