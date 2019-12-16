@@ -102,10 +102,6 @@ export class AuthService {
       .then(result => {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password);
       })
-      // .then(response => console.log(response))
-      // .then(user => new Promise((resolve, reject) => {
-      //   return this.doLogin(email, password);
-      // }))
       .catch(error => alert(error));
     });
   }

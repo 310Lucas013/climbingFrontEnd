@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {enableProdMode} from '@angular/core';
 import {AuthService} from './shared/serv/auth/auth.service';
+import { ClimbingroutesComponent } from './climbingroutes/climbingroutes.component';
 
 enableProdMode();
 firebase.initializeApp(environment.firebaseConfig);
@@ -30,7 +31,8 @@ firebase.initializeApp(environment.firebaseConfig);
     ProfileComponent,
     PageNotFoundComponent,
     NavigationComponent,
-    LoginComponent
+    LoginComponent,
+    ClimbingroutesComponent
   ],
   imports: [
     NgbModule,
