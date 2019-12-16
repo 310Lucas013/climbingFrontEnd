@@ -1,6 +1,6 @@
 import * as firebase from 'firebase/app';
 import { Injectable } from '@angular/core';
-
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Injectable({
@@ -8,9 +8,11 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-
-  constructor() {
+  constructor(public afAuth: AngularFireAuth) {
+    this.updateLocalStorage();
   }
+
+  userState: any;
 
   // Checks if user is signed in.
   static isSignedIn(): boolean {
@@ -23,17 +25,18 @@ export class AuthService {
     }
   }
 
+  // Sends Email Verification Mail.
+  static sendEmailVerification() {
+    firebase.auth().currentUser.sendEmailVerification().then();
+  }
+
   currentUser(): boolean {
-    if (firebase.auth().currentUser) {
+    this.userState = JSON.parse(localStorage.getItem('user'));
+    if (this.userState) {
       return true;
     } else {
       return false;
     }
-  }
-
-  // Sends Email Verification Mail.
-  static sendEmailVerification() {
-    firebase.auth().currentUser.sendEmailVerification().then();
   }
 
   // Sends Password Reset Email.
@@ -75,6 +78,13 @@ export class AuthService {
     });
   }
 
+  // Sign out
+  SignOut() {
+    return this.afAuth.auth.signOut().then(() => {
+      localStorage.removeItem('user');
+    });
+  }
+
   // Signs User Out.
   doSignOut() {
     firebase.auth().signOut()
@@ -90,13 +100,26 @@ export class AuthService {
     return new Promise<any>((resolve, reject) => {
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
       .then(result => {
-        return firebase.auth().signInWithEmailAndPassword(email, password);
+        return this.afAuth.auth.signInWithEmailAndPassword(email, password);
       })
       // .then(response => console.log(response))
       // .then(user => new Promise((resolve, reject) => {
       //   return this.doLogin(email, password);
       // }))
       .catch(error => alert(error));
+    });
+  }
+
+  updateLocalStorage() {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.userState = user;
+        localStorage.setItem('user', JSON.stringify(this.userState));
+        JSON.parse(localStorage.getItem('user'));
+      } else {
+        localStorage.setItem('user', null);
+        JSON.parse(localStorage.getItem('user'));
+      }
     });
   }
 }

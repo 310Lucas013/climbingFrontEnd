@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService, private location: Location) { }
 
   ngOnInit() {
-    console.log(AuthService.isSignedIn());
-    if (AuthService.isSignedIn()) {
+    console.log(this.authService.currentUser());
+    if (this.authService.currentUser()) {
       this.location.back();
     }
   }
@@ -25,13 +25,14 @@ export class LoginComponent implements OnInit {
   signIn() {
     console.log(this.InputEmail1);
     console.log(this.InputPassword1);
-    this.authService.persistenceLogin(this.InputEmail1, this.InputPassword1);
-      // .then(data => {
-      //   this.router.navigate(['/profile']);
-      // },
-      //   reason => {
-      //     console.log(reason);
-      //   });
+    this.authService.persistenceLogin(this.InputEmail1, this.InputPassword1)
+      .then(this.authService.updateLocalStorage)
+      // .then(this.router.navigate['/profile']);
+      .then(data => {
+        this.router.navigate(['/profile']);
+      },
+        reason => {
+          console.log(reason);
+        });
   }
-
 }

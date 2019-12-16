@@ -19,6 +19,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import { LoginComponent } from './login/login.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {enableProdMode} from '@angular/core';
+import {AuthService} from './shared/serv/auth/auth.service';
 
 enableProdMode();
 firebase.initializeApp(environment.firebaseConfig);
@@ -45,7 +46,7 @@ firebase.initializeApp(environment.firebaseConfig);
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

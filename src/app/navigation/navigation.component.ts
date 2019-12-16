@@ -12,21 +12,23 @@ export class NavigationComponent implements OnInit {
   signedIn: boolean;
 
   constructor(private auth: AuthService, private router: Router) {
-    if (AuthService.isSignedIn()) {
-      this.signedIn = true;
-    } else {
-      this.signedIn = false;
-    }
-    console.log(AuthService.isSignedIn());
+    // if (AuthService.isSignedIn()) {
+    //   this.signedIn = true;
+    // } else {
+    //   this.signedIn = false;
+    // }
+    // console.log(AuthService.isSignedIn());
+    this.signedIn = this.auth.currentUser();
+    console.log(this.signedIn);
   }
 
   ngOnInit() {
-    if (AuthService.isSignedIn()) {
-      this.signedIn = true;
-    } else {
-      this.signedIn = false;
-    }
-    console.log(AuthService.isSignedIn());
+    // if (AuthService.isSignedIn()) {
+    //   this.signedIn = true;
+    // } else {
+    //   this.signedIn = false;
+    // }
+    // console.log(AuthService.isSignedIn());
   }
 
   toRoutes() {
@@ -47,5 +49,10 @@ export class NavigationComponent implements OnInit {
 
   toProfile() {
     this.router.navigate(['/profile']);
+  }
+
+  toLogOut() {
+    this.auth.SignOut();
+    this.router.navigate(['/login']);
   }
 }

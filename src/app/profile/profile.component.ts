@@ -12,8 +12,8 @@ export class ProfileComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
-    console.log(AuthService.isSignedIn());
-    if (!AuthService.isSignedIn()) {
+    console.log(this.authService.currentUser());
+    if (!this.authService.currentUser()) {
       this.router.navigate(['/login']);
     }
   }
