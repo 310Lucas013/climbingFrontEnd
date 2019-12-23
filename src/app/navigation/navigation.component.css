@@ -12,10 +12,10 @@
   white-space: nowrap;
   color: inherit;
   font-family: Roboto,"Helvetica Neue",sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
-  padding-left: 3%;
-  padding-right: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 nav {
@@ -25,3 +25,21 @@ nav {
 .right-side{
   float: right;
 }
+
+@media screen and (max-width: 1000px) {
+  .mat-button-wrapper {
+    font-size: 15px;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}
+
+@media screen and (max-width: 735px) {
+  .mat-button-wrapper{
+    font-size: 14px;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+
+

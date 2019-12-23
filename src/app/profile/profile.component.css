@@ -5,6 +5,12 @@
 .image {
   height: 15%;
   width: 15%;
+  margin-left: 42.5%;
+}
+
+.background {
+  margin: 0 10%;
+  background-color: grey;
 }
 
 .margin-middle {
@@ -22,3 +28,42 @@
 .text-size {
   font-size: 1.2em;
 }
+
+@media screen and (max-width: 1000px) {
+  .text-size {
+    font-size: 1em;
+  }
+
+  .spacing {
+    padding-left: 2.5em;
+  }
+
+  .tiny-spacing {
+    padding-left: 1.5em;
+  }
+
+  .margin-middle {
+    margin-left: 41%;
+  }
+}
+
+@media screen and (max-width: 735px) {
+  .text-size {
+    font-size: 0.8em;
+  }
+
+  .spacing {
+    padding-left: 2em;
+  }
+
+  .tiny-spacing {
+    padding-left: 1em;
+  }
+
+  .margin-middle {
+    margin-left: 40%;
+  }
+}
+
+
+
