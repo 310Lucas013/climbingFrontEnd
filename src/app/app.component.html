@@ -7,8 +7,12 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<app-navigation></app-navigation>
+<app-navigation *ngIf="this.enabled"></app-navigation>
+<!--<div>-->
+<!--  <mat-radio-button [value]="myLoggedIn" (change)="loggedInChange($event)"></mat-radio-button>-->
+<!--</div>-->
 <router-outlet></router-outlet>
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
