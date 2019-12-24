@@ -96,26 +96,40 @@ export class AuthService {
       });
   }
 
-  persistenceLogin(email: string, password: string) {
+  async persistenceLogin(email: string, password: string) {
     return new Promise<any>((resolve, reject) => {
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
       .then(result => {
-        return this.afAuth.auth.signInWithEmailAndPassword(email, password);
-      })
+        console.log('Success Login');
+        resolve(result);
+        return new Promise<any>(resultLogin => {
+          this.afAuth.auth.signInWithEmailAndPassword(email, password);
+          resolve(resultLogin);
+        });
+      }, error => {
+        console.log('Failure Login');
+        reject(error);
+        })
       .catch(error => alert(error));
     });
   }
 
   updateLocalStorage() {
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.userState = user;
-        localStorage.setItem('user', JSON.stringify(this.userState));
-        JSON.parse(localStorage.getItem('user'));
-      } else {
-        localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
-      }
+    return new Promise(resolve => {
+      this.afAuth.authState.subscribe(user => {
+        let loggedIn: boolean = true;
+        if (user) {
+          this.userState = user;
+          localStorage.setItem('user', JSON.stringify(this.userState));
+          JSON.parse(localStorage.getItem('user'));
+          loggedIn = true;
+        } else {
+          localStorage.setItem('user', null);
+          JSON.parse(localStorage.getItem('user'));
+          loggedIn = false;
+        }
+        resolve(loggedIn);
+      });
     });
   }
 }

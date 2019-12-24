@@ -1,6 +1,28 @@
 <div class="competition-view">
-  <div>
-    <p>hello</p>
+  <div class="container" *ngFor="let comp of competitions">
+    <!--    <div class="container">-->
+
+    <span class="item-image">
+      <img class="image" src="../../assets/img/ProfilePic.png"/>
+    </span>
+
+    <span class="item-text">{{comp.name}}</span>
+    <span class="item-button">
+      <button>Enter Competition</button>
+    </span>
+    <span class="item-text">
+      <span>{{comp.startDate}} - {{comp.endDate}}</span>
+    </span>
+    <span class="item-button">
+      <button>Routes</button>
+    </span>
+    <span class="item-text">{{comp.participants}}</span>
+    <span class="item-button">
+      <button>Participants</button>
+    </span>
+
+    <!--    </div>-->
+    <!--    <p>hello</p>-->
   </div>
 </div>
 
