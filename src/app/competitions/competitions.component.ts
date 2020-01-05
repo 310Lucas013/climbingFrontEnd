@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Competition} from "../shared/models/Competition";
+import {Competition} from '../shared/models/Competition';
 
 @Component({
   selector: 'app-competitions',

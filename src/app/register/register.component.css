@@ -1,0 +1,9 @@
+@media (min-width: 576px){
+  .be-example {
+    padding: 1.5rem 4.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: .2rem;
+  }
+}
+

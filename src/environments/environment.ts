@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  source: 'http://localhost:8093',
   firebaseConfig: {
     apiKey: 'AIzaSyAJnP5PFtxoFokkXp-gMmv08KKgVNNe8kk',
     authDomain: 'climbingapp-2ff4a.firebaseapp.com',

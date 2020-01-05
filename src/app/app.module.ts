@@ -23,6 +23,7 @@ import {AuthService} from './shared/serv/auth/auth.service';
 import { ClimbingroutesComponent } from './climbingroutes/climbingroutes.component';
 import {CommonModule} from '@angular/common';
 import { CompetitionsComponent } from './competitions/competitions.component';
+import { RegisterComponent } from './register/register.component';
 
 enableProdMode();
 firebase.initializeApp(environment.firebaseConfig);
@@ -35,7 +36,8 @@ firebase.initializeApp(environment.firebaseConfig);
     NavigationComponent,
     LoginComponent,
     ClimbingroutesComponent,
-    CompetitionsComponent
+    CompetitionsComponent,
+    RegisterComponent
   ],
   imports: [
     NgbModule,

@@ -50,6 +50,10 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  register() {
+    this.router.navigate(['/register']);
+  }
+
   updateLoggedIn() {
     this.authService.updateLocalStorage()
       .then(loggedIn => {
