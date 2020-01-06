@@ -8,7 +8,7 @@
 
     <span class="item-text">{{comp.name}}</span>
     <span class="item-button">
-      <button>Enter Competition</button>
+      <button (click)="enterCompetition(comp.name)">Enter Competition</button>
     </span>
     <span class="item-text">
       <span>{{comp.startDate}} - {{comp.endDate}}</span>
