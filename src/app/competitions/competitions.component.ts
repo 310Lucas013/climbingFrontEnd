@@ -14,7 +14,7 @@ import {Group} from '../shared/enums/Group';
 export class CompetitionsComponent implements OnInit {
 
   constructor(private service: CompetitionService, private accompservice: AccountcompetitionService) { }
-  competitions = [new Competition(1, 'TriggerFinger 2016', '02/02/2016',
+  competitions: Competition[] = [new Competition(1, 'TriggerFinger 2016', '02/02/2016',
     '07/07/2016', 12),
     new Competition(2, 'TriggerFinger 2017', '02/02/2016',
       '07/07/2016', 14)];
@@ -23,7 +23,16 @@ export class CompetitionsComponent implements OnInit {
   group: Group;
 
   ngOnInit() {
+    // this.getCompetitions(1);
   }
+
+  // getCompetitions(id: number) {
+  //   this.accompservice.getById(id).subscribe(
+  //     data => {
+  //       this.competitions = data.forEach()
+  //     }
+  //   );
+  // }
 
   enterCompetition(name: string) {
     this.group = Group.BEGINNER;
