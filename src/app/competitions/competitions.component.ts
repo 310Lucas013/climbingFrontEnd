@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Competition} from '../shared/models/Competition';
 import {CompetitionService} from '../shared/serv/competition/competition.service';
 import {AccountcompetitionService} from '../shared/serv/accountcompetition/accountcompetition.service';
@@ -14,31 +14,40 @@ import {AccountCompetition} from '../shared/models/AccountCompetition';
 })
 export class CompetitionsComponent implements OnInit {
 
-  constructor(private service: CompetitionService, private accompservice: AccountcompetitionService) { }
+  constructor(private service: CompetitionService, private accompservice: AccountcompetitionService) {
+  }
+
   competitions: Competition[] = [new Competition(1, 'TriggerFinger 2016', '02/02/2016',
     '07/07/2016'),
     new Competition(2, 'TriggerFinger 2017', '02/02/2016',
       '07/07/2016')];
 
-  accountCompetitions: AccountCompetition[];
+  accountCompetitions: AccountCompetition[] = [];
   tempAccountCompetitions: AccountCompetition[];
 
   email: string;
   group: Group;
 
   ngOnInit() {
+    // GetAllCompetitions
     this.service.getCompetitions().subscribe(data => {
       this.competitions = data;
-      console.log(this.competitions);
+      // For Loop of all competitions
       for (let i = 0; i <= this.competitions.length; i++) {
+        // Get Additional information of Competitions (Participations and group)
         this.accompservice.getAccountCompetitionByCompetitionName(this.competitions[i].name).subscribe(accounts => {
+          // Temporary Storage
           this.tempAccountCompetitions = accounts;
-          console.log(this.tempAccountCompetitions);
           console.log(i);
-          this.competitions[i].setParticipants(this.tempAccountCompetitions.length);
-          console.log(this.competitions);
+          console.log('accounts');
+          console.log(accounts);
+          // Setting Participants
+          this.competitions[i].participants = this.tempAccountCompetitions.length;
+          // Transfering AccountCompetitions from Temp storage to accountCompetitions.
           for (let j = 0; j <= this.tempAccountCompetitions.length; j++) {
-            this.competitions[j].setParticipants(this.tempAccountCompetitions.length);
+            // if (this.accountCompetitions.length) {
+            //   this.accountCompetitions = this.tempAccountCompetitions[j];
+            // }
             this.accountCompetitions.push(this.tempAccountCompetitions[j]);
             console.log(this.accountCompetitions);
           }
