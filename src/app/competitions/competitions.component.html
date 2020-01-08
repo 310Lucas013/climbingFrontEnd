@@ -11,7 +11,7 @@
       <button (click)="enterCompetition(comp.name)">Enter Competition</button>
     </span>
     <span class="item-text">
-      <span>{{comp.startDate}} - {{comp.endDate}}</span>
+      <span>{{comp.startDate| date: 'dd-MM-yyyy'}} - {{comp.endDate| date: 'dd-MM-yyyy'}}</span>
     </span>
     <span class="item-button">
       <button>Routes</button>
@@ -25,4 +25,32 @@
     <!--    <p>hello</p>-->
   </div>
 </div>
+
+<!--<div class="competition-view">-->
+<!--  <div class="container" *ngFor="let comp of accountCompetitions">-->
+<!--    &lt;!&ndash;    <div class="container">&ndash;&gt;-->
+
+<!--    <span class="item-image">-->
+<!--      <img class="image" src="../../assets/img/ProfilePic.png"/>-->
+<!--    </span>-->
+
+<!--    <span class="item-text">{{comp.competition.name}}</span>-->
+<!--    <span class="item-button">-->
+<!--      <button (click)="enterCompetition(comp.competition.name)">Enter Competition</button>-->
+<!--    </span>-->
+<!--    <span class="item-text">-->
+<!--      <span>{{comp.competition.startDate| date: 'dd-MM-yyyy'}} - {{comp.competition.endDate| date: 'dd-MM-yyyy'}}</span>-->
+<!--    </span>-->
+<!--    <span class="item-button">-->
+<!--      <button>Routes</button>-->
+<!--    </span>-->
+<!--    <span class="item-text">Participants: {{comp.participants}}</span>-->
+<!--    <span class="item-button">-->
+<!--      <button>Participants</button>-->
+<!--    </span>-->
+
+<!--    &lt;!&ndash;    </div>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <p>hello</p>&ndash;&gt;-->
+<!--  </div>-->
+<!--</div>-->
 

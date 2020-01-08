@@ -28,4 +28,12 @@ export class AccountcompetitionService {
     return this.http.get<AccountCompetition[]>(this.source + '/' + id);
   }
 
+  getParticipantsByCompetitionName(name: string): Observable<number> {
+    return this.http.get<number>(this.source + '/participants/' + name);
+  }
+
+  getAccountCompetitionByCompetitionName(name: string): Observable<AccountCompetition[]> {
+    return this.http.get<AccountCompetition[]>(this.source + '/name/' + name);
+  }
+
 }
