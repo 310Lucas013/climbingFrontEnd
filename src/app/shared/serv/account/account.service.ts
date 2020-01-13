@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Account} from '../../models/account';
 import {environment} from '../../../../environments/environment';
 import {Observable} from 'rxjs';
+import {UpdateAccount} from '../../formData/UpdateAccount';
 
 @Injectable({
   providedIn: 'root'
@@ -62,12 +63,15 @@ export class AccountService {
     return this.http.post(this.source + '/loginaccount', body, options);
   }
 
-  update(receipt: any) {
-    return this.http.put(this.source + '/' + receipt.id, receipt);
+  update(updateAccount: UpdateAccount) {
+    const body = JSON.stringify(updateAccount);
+    const options = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+    return this.http.put<Account>(this.source + '/update', body, options);
   }
 
-  delete(receipt: any) {
-    return this.http.delete(this.source + '/' + receipt.id);
+  getAccountByEmail(email: string): Observable<Account> {
+    return this.http.get<Account>(this.source + '/' + email);
   }
-
 }

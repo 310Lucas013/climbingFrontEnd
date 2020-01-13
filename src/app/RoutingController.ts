@@ -7,6 +7,7 @@ import {NavigationComponent} from './navigation/navigation.component';
 import {ClimbingroutesComponent} from './climbingroutes/climbingroutes.component';
 import {CompetitionsComponent} from './competitions/competitions.component';
 import {RegisterComponent} from './register/register.component';
+import {CompetitionroutesComponent} from './competitionroutes/competitionroutes.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/profile', pathMatch: 'full'},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'routes', component: ClimbingroutesComponent},
   {path: 'competitions', component: CompetitionsComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'competitionroute/:id', component: CompetitionroutesComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

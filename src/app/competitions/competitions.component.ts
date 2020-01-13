@@ -6,6 +6,7 @@ import * as firebase from 'firebase';
 import {AddAccountCompetition} from '../shared/formData/AddAccountCompetition';
 import {Group} from '../shared/enums/Group';
 import {AccountCompetition} from '../shared/models/AccountCompetition';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-competitions',
@@ -14,7 +15,7 @@ import {AccountCompetition} from '../shared/models/AccountCompetition';
 })
 export class CompetitionsComponent implements OnInit {
 
-  constructor(private service: CompetitionService, private accompservice: AccountcompetitionService) {
+  constructor(private service: CompetitionService, private accompservice: AccountcompetitionService, private router: Router) {
   }
 
   competitions: Competition[] = [new Competition(1, 'TriggerFinger 2016', '02/02/2016',
@@ -68,6 +69,10 @@ export class CompetitionsComponent implements OnInit {
     this.group = Group.BEGINNER;
     this.email = firebase.auth().currentUser.email;
     this.accompservice.save(new AddAccountCompetition(name, this.email, this.group));
+  }
+
+  seeRoutes(id: number) {
+    this.router.navigate(['/competitionroute/' + id]);
   }
 
 }

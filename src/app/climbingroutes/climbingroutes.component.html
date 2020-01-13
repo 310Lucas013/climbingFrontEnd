@@ -1,22 +1,22 @@
-<table matSort (matSortChange)="sortData($event)" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<!--<table matSort (matSortChange)="sortData($event)" mat-table [dataSource]="dataSource" class="mat-elevation-z8">-->
 
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns">
-    <th mat-header-cell mat-sort-header="name" *matHeaderCellDef>Dessert (100g)</th>
-    <th mat-header-cell mat-sort-header="calories" *matHeaderCellDef>Calories</th>
-    <th mat-header-cell mat-sort-header="fat" *matHeaderCellDef>Fat (g)</th>
-    <th mat-header-cell mat-sort-header="carbs" *matHeaderCellDef>Carbs (g)</th>
-    <th mat-header-cell mat-sort-header="protein" *matHeaderCellDef>Protein (g)</th>
-  </tr>
+<!--  <tr mat-header-row *matHeaderRowDef="displayedColumns">-->
+<!--    <th mat-header-cell mat-sort-header="name" *matHeaderCellDef>Dessert (100g)</th>-->
+<!--    <th mat-header-cell mat-sort-header="calories" *matHeaderCellDef>Calories</th>-->
+<!--    <th mat-header-cell mat-sort-header="fat" *matHeaderCellDef>Fat (g)</th>-->
+<!--    <th mat-header-cell mat-sort-header="carbs" *matHeaderCellDef>Carbs (g)</th>-->
+<!--    <th mat-header-cell mat-sort-header="protein" *matHeaderCellDef>Protein (g)</th>-->
+<!--  </tr>-->
 
-  <tr mat-row *ngFor="let dessert of sortedData">
-    <td mat-cell>{{dessert.name}}</td>
-    <td mat-cell>{{dessert.calories}}</td>
-    <td mat-cell>{{dessert.fat}}</td>
-    <td mat-cell>{{dessert.carbs}}</td>
-    <td mat-cell>{{dessert.protein}}</td>
-  </tr>
-</table>
+<!--  <tr mat-row *ngFor="let dessert of sortedData">-->
+<!--    <td mat-cell>{{dessert.name}}</td>-->
+<!--    <td mat-cell>{{dessert.calories}}</td>-->
+<!--    <td mat-cell>{{dessert.fat}}</td>-->
+<!--    <td mat-cell>{{dessert.carbs}}</td>-->
+<!--    <td mat-cell>{{dessert.protein}}</td>-->
+<!--  </tr>-->
+<!--</table>-->
 <!--  &lt;!&ndash;- Note that these columns can be defined in any order.-->
 <!--        The actual rendered columns are set as a property on the row definition" &ndash;&gt;-->
 
@@ -54,7 +54,37 @@
 <!--  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
 <!--</table>-->
 
-<mat-paginator [length]="100"
-               [pageSize]="10"
-               [pageSizeOptions]="[5, 10, 25, 100]">
-</mat-paginator>
+<!--<mat-paginator [length]="100"-->
+<!--               [pageSize]="10"-->
+<!--               [pageSizeOptions]="[5, 10, 25, 100]">-->
+<!--</mat-paginator>-->
+
+<!-- New try -->
+
+<div class="flex-container">
+  <div class="row" style="float:left;  width: 50%; margin-left: 10%">
+    <div class="[ col-xs-12]">
+      <div class="event-list">
+        <div class="activityitem" *ngFor="let ClimbingRoute of climbingRoutes">
+          <div (click)="RouteInfo(this.ClimbingRoute.id)">
+            <div class="info">
+              <h2 class="title">{{ClimbingRoute.name}}</h2>
+            </div>
+<!--            <time>-->
+<!--              <span>Datum: {{Activity.activityDate| date: 'dd - MM - yy'}} </span><br/>-->
+<!--              <span class="start tijd">Start tijd: {{Activity.startTime}}</span><br/>-->
+<!--              <span class="tijd"> Duurt: {{Activity.duration}}</span>-->
+<!--            </time>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-paginator [length]="length"
+                 [pageSize]="1"
+                 [pageSizeOptions]="[1, 10]"
+                 (page)="pageEvent = getRoutes($event)">
+  </mat-paginator>
+</div>
+
+<!-- End New Try -->

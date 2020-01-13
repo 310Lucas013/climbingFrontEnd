@@ -14,7 +14,7 @@
       <span>{{comp.startDate| date: 'dd-MM-yyyy'}} - {{comp.endDate| date: 'dd-MM-yyyy'}}</span>
     </span>
     <span class="item-button">
-      <button>Routes</button>
+      <button (click)="seeRoutes(comp.id)">Routes</button>
     </span>
     <span class="item-text">Participants: {{comp.participants}}</span>
     <span class="item-button">
