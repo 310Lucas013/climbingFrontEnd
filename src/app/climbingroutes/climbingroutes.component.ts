@@ -46,4 +46,9 @@ export class ClimbingroutesComponent implements OnInit {
     });
   }
 
+  climbingTry(zone: number) {
+    // TODO ADD CLIMBING TRY TO USER WITH ZONE.
+    console.log(zone);
+  }
+
 }

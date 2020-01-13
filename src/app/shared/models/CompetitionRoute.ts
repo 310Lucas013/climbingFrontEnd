@@ -2,11 +2,12 @@ import {Competition} from './Competition';
 import {ClimbingRoute} from './ClimbingRoute';
 
 export class CompetitionRoute {
+  id: number;
+  route: ClimbingRoute;
   competition: Competition;
-  climbingRoute: ClimbingRoute;
 
   constructor(competition: Competition, route: ClimbingRoute) {
     this.competition = competition;
-    this.climbingRoute = route;
+    this.route = route;
   }
 }
