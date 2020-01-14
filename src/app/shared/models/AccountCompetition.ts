@@ -1,18 +1,20 @@
 import {Competition} from './Competition';
+import {Account} from './Account';
 import {Group} from '../enums/Group';
 
 export class AccountCompetition {
   account: Account;
   competition: Competition;
-  group: Group;
+  groupName: Group;
+  totalPoints: number;
 
   constructor(
     account: Account,
     competition: Competition,
-    group: Group
+    groupName: Group
   ) {
     this.account = account;
     this.competition = competition;
-    this.group = group;
+    this.groupName = groupName;
   }
 }

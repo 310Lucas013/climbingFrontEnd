@@ -1,8 +1,17 @@
-<div class="overall">
-  <div *ngFor="let participant of participants">
-    <div class="info">
-      <h2 class="title">{{participant.account.name}}</h2>
-      <p>{{participant.group}}</p>
+<div class="flex-container">
+  <div class="row" style="float:left;  width: 50%; margin-left: 10%">
+    <div class="[ col-xs-12]">
+      <div class="event-list">
+        <div class="overall">
+          <div class="scoreboardItem" *ngFor="let participant of this.participants">
+            <div class="info">
+              <h2 class="title">Climber name: {{participant.account.firstName}}</h2>
+              <p>Group: {{participant.groupName}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+

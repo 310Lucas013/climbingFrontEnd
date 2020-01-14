@@ -22,6 +22,7 @@ export class ScoreboardComponent implements OnInit {
     this.service.getAccountCompetitions().subscribe(data => {
       console.log(data);
       this.participants = data;
+      console.log(this.participants);
     });
   }
 
