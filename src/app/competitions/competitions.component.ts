@@ -75,4 +75,8 @@ export class CompetitionsComponent implements OnInit {
     this.router.navigate(['/competitionroute/' + id]);
   }
 
+  scoreboard(id: number) {
+    this.router.navigate(['/scoreboard/' + id]);
+  }
+
 }

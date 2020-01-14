@@ -5,6 +5,7 @@ import {AccountService} from '../shared/serv/account/account.service';
 import * as firebase from 'firebase';
 import {Account} from '../shared/models/Account';
 import {UpdateAccount} from '../shared/formData/UpdateAccount';
+import {AccountrouteService} from "../shared/serv/accountroute/accountroute.service";
 
 @Component({
   selector: 'app-profile',
@@ -20,8 +21,9 @@ export class ProfileComponent implements OnInit {
   uid: string;
   account: Account;
   updatedAccount: UpdateAccount;
+  routeCount: number;
 
-  constructor(private router: Router, private authService: AuthService, private service: AccountService) {
+  constructor(private router: Router, private authService: AuthService, private service: AccountService, private accountRouteService: AccountrouteService) {
 
   }
 
@@ -50,6 +52,9 @@ export class ProfileComponent implements OnInit {
         this.firstName = data.firstName;
         this.middleName = data.middleName;
         this.lastName = data.lastName;
+      });
+      this.accountRouteService.getAccountRouteCountByEmail(firebase.auth().currentUser.email).subscribe(countData => {
+        this.routeCount = countData;
       });
     }
     // this.doSomething();

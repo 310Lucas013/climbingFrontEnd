@@ -25,6 +25,7 @@ import {CommonModule} from '@angular/common';
 import { CompetitionsComponent } from './competitions/competitions.component';
 import { RegisterComponent } from './register/register.component';
 import { CompetitionroutesComponent } from './competitionroutes/competitionroutes.component';
+import { ScoreboardComponent } from './scoreboard/scoreboard.component';
 
 enableProdMode();
 firebase.initializeApp(environment.firebaseConfig);
@@ -39,7 +40,8 @@ firebase.initializeApp(environment.firebaseConfig);
     ClimbingroutesComponent,
     CompetitionsComponent,
     RegisterComponent,
-    CompetitionroutesComponent
+    CompetitionroutesComponent,
+    ScoreboardComponent
   ],
   imports: [
     NgbModule,

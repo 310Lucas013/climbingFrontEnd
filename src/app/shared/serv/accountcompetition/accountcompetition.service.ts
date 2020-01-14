@@ -36,4 +36,8 @@ export class AccountcompetitionService {
     return this.http.get<AccountCompetition[]>(this.source + '/name/' + name);
   }
 
+  getAccountCompetitions(): Observable<AccountCompetition[]> {
+    return this.http.get<AccountCompetition[]>(this.source);
+  }
+
 }
