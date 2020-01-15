@@ -64,11 +64,12 @@ export class AccountService {
   }
 
   update(updateAccount: UpdateAccount) {
+    console.log('update requested');
     const body = JSON.stringify(updateAccount);
     const options = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
-    return this.http.put<Account>(this.source + '/update', body, options);
+    return this.http.put<UpdateAccount>(this.source + '/update', body, options);
   }
 
   getAccountByEmail(email: string): Observable<Account> {

@@ -63,7 +63,9 @@ export class ProfileComponent implements OnInit {
   updateAccount() {
     this.updatedAccount = new UpdateAccount(this.firstName, this.middleName, this.lastName, this.email, this.uid);
     console.log(this.updatedAccount);
-    this.service.update(this.updatedAccount);
+    this.service.update(this.updatedAccount).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }

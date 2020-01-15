@@ -2,20 +2,20 @@ export class UpdateAccount {
   firstName: string;
   middleName: string;
   lastName: string;
-  uid: string;
   email: string;
+  uid: string;
 
   constructor(
     firstName: string,
     middleName: string,
     lastName: string,
-    uid: string,
-    email: string
+    email: string,
+    uid: string
   ) {
     this.firstName = firstName;
     this.middleName = middleName;
     this.lastName = lastName;
-    this.uid = uid;
     this.email = email;
+    this.uid = uid;
   }
 }

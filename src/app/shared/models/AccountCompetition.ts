@@ -6,7 +6,7 @@ export class AccountCompetition {
   account: Account;
   competition: Competition;
   groupName: Group;
-  totalPoints: number;
+  score: number;
 
   constructor(
     account: Account,
