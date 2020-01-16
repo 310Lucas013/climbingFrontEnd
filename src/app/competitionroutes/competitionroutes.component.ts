@@ -5,6 +5,7 @@ import {CompetitionrouteService} from '../shared/serv/competitionroute/competiti
 import * as firebase from 'firebase';
 import {AddAccountRoute} from '../shared/formData/AddAccountRoute';
 import {AccountrouteService} from '../shared/serv/accountroute/accountroute.service';
+import {WebSocketService} from '../shared/serv/websocket/websocket.service';
 
 @Component({
   selector: 'app-competitionroutes',
@@ -18,7 +19,7 @@ export class CompetitionroutesComponent implements OnInit {
   addAccountRoute: AddAccountRoute;
   competitionRoutes: CompetitionRoute[];
 
-  constructor(private route: ActivatedRoute, private service: CompetitionrouteService, private accountRouteService: AccountrouteService) {
+  constructor(private route: ActivatedRoute, private service: CompetitionrouteService, private accountRouteService: AccountrouteService, private wsService: WebSocketService) {
     this.route.params.subscribe(params => {
       this.id = params.id;
       this.competitionRoutes = [];
@@ -27,6 +28,7 @@ export class CompetitionroutesComponent implements OnInit {
         this.competitionRoutes = data as CompetitionRoute[];
       });
     });
+    this.wsSubscribe();
   }
 
   ngOnInit() {
@@ -38,5 +40,46 @@ export class CompetitionroutesComponent implements OnInit {
     this.email = firebase.auth().currentUser.email;
     this.addAccountRoute = new AddAccountRoute(this.email, routeId, zone);
     this.accountRouteService.save(this.addAccountRoute);
+  }
+
+  private wsSubscribe() {
+    // Open connection with server socket
+    let stompClient = this.wsService.connect();
+
+    console.log(stompClient);
+
+    stompClient.connect({}, frame => {
+      console.log(stompClient);
+      console.log(frame);
+      // Subscribe to notification topic
+
+
+      stompClient.subscribe('/topic/messages', notification => {
+        // if (notification.body.startsWith('[transform]')) {
+
+          // this._snackBar.open(notification.body, '', {duration: 7000, horizontalPosition: 'right'});
+          // rest of the logic goes here...
+        // }
+        if (notification.body) {
+          console.log(notification.body);
+          // this._snackBar.open(notification.body, '', {duration: 7000, horizontalPosition: 'right'});
+          // rest of the logic goes here...
+        }
+      });
+      //
+      // stompClient.subscribe('/topic/message/user', notification => {
+      //   if (notification.body.startsWith('[transform]')) {
+      //     this._snackBar.open(notification.body, '', {duration: 7000, horizontalPosition: 'right'});
+      //     // rest of the logic goes here...
+      //   }
+      // });
+      //
+      // stompClient.send('/topic/message/user', notification => {
+      //   if (notification.body.startsWith('[transform]')) {
+      //     this._snackBar.open(notification.body, '', {duration: 7000, horizontalPosition: 'right'});
+      //     // rest of the logic goes here...
+      //   }
+      // });
+    });
   }
 }
