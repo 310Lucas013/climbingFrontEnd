@@ -5,14 +5,16 @@ import * as SockJS from 'sockjs-client';
 
 export class WebSocketService {
   // Our socket connection private socket;
-  private serverUrl = 'http://ip:18090/stomp'; private stompClient;
+  private serverUrl = 'ws://localhost:8080/greeting'; private stompClient;
 
   constructor() {}
 
   // Open connection with the back-end socket
   public connect() {
-    const socket = new SockJS(this.serverUrl);
+    // const socket = new SockJS(this.serverUrl);
+    const socket = new WebSocket(this.serverUrl);
     const stompClient = Stomp.over(socket);
+    console.log(stompClient);
     return stompClient;
   }
 }

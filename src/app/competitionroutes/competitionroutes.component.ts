@@ -6,6 +6,7 @@ import * as firebase from 'firebase';
 import {AddAccountRoute} from '../shared/formData/AddAccountRoute';
 import {AccountrouteService} from '../shared/serv/accountroute/accountroute.service';
 import {WebSocketService} from '../shared/serv/websocket/websocket.service';
+import * as Stomp from 'stompjs';
 
 @Component({
   selector: 'app-competitionroutes',
@@ -43,22 +44,40 @@ export class CompetitionroutesComponent implements OnInit {
   }
 
   private wsSubscribe() {
+    const socket = new WebSocket('ws://localhost:8080/greeting');
+    const stompClient = Stomp.over(socket);
     // Open connection with server socket
-    let stompClient = this.wsService.connect();
+    // let stompClient = this.wsService.connect();
 
     console.log(stompClient);
 
     stompClient.connect({}, frame => {
+    // stompClient.onmessage( data => {
+    //   console.log(data.data);
       console.log(stompClient);
       console.log(frame);
       // Subscribe to notification topic
+      stompClient.setConnected(true);
 
 
-      stompClient.subscribe('/topic/messages', notification => {
+      stompClient.subscribe('/queue/reply', notification => {
         // if (notification.body.startsWith('[transform]')) {
 
           // this._snackBar.open(notification.body, '', {duration: 7000, horizontalPosition: 'right'});
           // rest of the logic goes here...
+        // }
+        if (notification.body) {
+          console.log(notification.body);
+          // this._snackBar.open(notification.body, '', {duration: 7000, horizontalPosition: 'right'});
+          // rest of the logic goes here...
+        }
+      });
+
+      stompClient.subscribe('/queue/errors', notification => {
+        // if (notification.body.startsWith('[transform]')) {
+
+        // this._snackBar.open(notification.body, '', {duration: 7000, horizontalPosition: 'right'});
+        // rest of the logic goes here...
         // }
         if (notification.body) {
           console.log(notification.body);
