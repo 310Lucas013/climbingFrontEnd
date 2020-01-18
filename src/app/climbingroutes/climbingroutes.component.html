@@ -69,16 +69,30 @@
           <div (click)="RouteInfo(this.ClimbingRoute.id)">
             <div class="info">
               <h2 class="title">{{ClimbingRoute.name}}</h2>
-              <p (click)="climbingTry(1)">Zone 1</p>
-              <p (click)="climbingTry(2)">Zone 2</p>
-              <p (click)="climbingTry(3)">Zone 3</p>
-              <p (click)="climbingTry(4)">Top</p>
+              <p>
+                <span>Zone Reached: </span>
+                <span class="spacing" (click)="climbingTry(ClimbingRoute.id, 1)">Zone 1</span>
+                <span class="spacing" (click)="climbingTry(ClimbingRoute.id,2)">Zone 2</span>
+                <span class="spacing" (click)="climbingTry(ClimbingRoute.id,3)">Zone 3</span>
+                <span class="spacing" (click)="climbingTry(ClimbingRoute.id,4)">Top</span>
+              </p>
+              <p>
+                <span>Route Difficulty:</span>
+                <span class="spacing">{{ClimbingRoute.difficulty}}{{ClimbingRoute.plusMinus}}</span>
+              </p>
+              <p>
+                <span>Route Color:</span>
+                <span class="spacing">{{ClimbingRoute.color}}</span>
+              </p>
+              <p>
+                <span>Securing Methods available:</span>
+                <span class="spacing">{{ClimbingRoute.securingMethod.toString()}}</span>
+              </p>
+              <p>
+                <span>Route was build on:</span>
+                <span class="spacing">{{ClimbingRoute.buildDate| date: 'dd-MM-yyyy'}}</span>
+              </p>
             </div>
-<!--            <time>-->
-<!--              <span>Datum: {{Activity.activityDate| date: 'dd - MM - yy'}} </span><br/>-->
-<!--              <span class="start tijd">Start tijd: {{Activity.startTime}}</span><br/>-->
-<!--              <span class="tijd"> Duurt: {{Activity.duration}}</span>-->
-<!--            </time>-->
           </div>
         </div>
       </div>

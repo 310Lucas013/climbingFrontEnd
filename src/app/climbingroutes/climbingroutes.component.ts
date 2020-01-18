@@ -3,6 +3,9 @@ import {ClimbingRoute} from '../shared/models/ClimbingRoute';
 import {ClimbingrouteService} from '../shared/serv/climbingroutes/climbingroute.service';
 import {ClimbingRouteFilter} from '../shared/models/ClimbingRouteFilter';
 import {PageEvent} from '@angular/material';
+import * as firebase from "firebase";
+import {AddAccountRoute} from "../shared/formData/AddAccountRoute";
+import {AccountrouteService} from "../shared/serv/accountroute/accountroute.service";
 
 @Component({
   selector: 'app-climbingroutes',
@@ -11,14 +14,18 @@ import {PageEvent} from '@angular/material';
 })
 export class ClimbingroutesComponent implements OnInit {
 
+  id: number;
+  email: string;
   length: number;
   pageSize: number;
+  addAccountRoute: AddAccountRoute;
   pageEvent: PageEvent;
   filter: ClimbingRouteFilter;
-  climbingRoutes: ClimbingRoute[] = [new ClimbingRoute(1, 'The Challenge'),
-  new ClimbingRoute(2, 'The Roof')];
+  climbingRoutes: ClimbingRoute[];
+  //   = [new ClimbingRoute(1, 'The Challenge'),
+  // new ClimbingRoute(2, 'The Roof')];
 
-  constructor(private service: ClimbingrouteService) {
+  constructor(private service: ClimbingrouteService, private accountRouteService: AccountrouteService) {
     this.filter = new ClimbingRouteFilter();
     this.pageSize = 1;
   }
@@ -28,7 +35,7 @@ export class ClimbingroutesComponent implements OnInit {
       this.length = data;
     });
     this.service.getFilterRoutes(this.filter).subscribe(routeData => {
-      this.climbingRoutes = routeData;
+      this.climbingRoutes = routeData as ClimbingRoute[];
     });
   }
 
@@ -46,9 +53,12 @@ export class ClimbingroutesComponent implements OnInit {
     });
   }
 
-  climbingTry(zone: number) {
+  climbingTry(routeId: number, zone: number) {
     // TODO ADD CLIMBING TRY TO USER WITH ZONE.
     console.log(zone);
+    this.email = firebase.auth().currentUser.email;
+    this.addAccountRoute = new AddAccountRoute(this.email, routeId, zone);
+    this.accountRouteService.save(this.addAccountRoute);
   }
 
 }
