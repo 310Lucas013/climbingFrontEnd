@@ -1,12 +1,19 @@
 pipeline {
   agent any
   stages {
+    stage('VersionOne') {
+      steps {
+        sh 'node --version'
+      }
+    }
+    stage('VersionTwo') {
+      steps {
+        sh 'npm --version'
+      }
+    }
     stage('Initialize') {
       steps {
-        sh '''
-        node --version
-        npm --version
-        npm install'''
+        sh 'npm install'
       }
     }
     stage('build') {
