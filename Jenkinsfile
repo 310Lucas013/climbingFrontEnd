@@ -4,8 +4,8 @@ pipeline {
     stage('Initialize') {
       steps {
         sh '''
-        echo node --version
-        echo npm --version
+        node --version
+        npm --version
         install nodejs
         npm install'''
       }
