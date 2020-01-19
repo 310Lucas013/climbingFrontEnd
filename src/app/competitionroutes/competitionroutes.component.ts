@@ -8,6 +8,7 @@ import {AccountrouteService} from '../shared/serv/accountroute/accountroute.serv
 import {WebSocketService} from '../shared/serv/websocket/websocket.service';
 import * as Stomp from 'stompjs';
 import {DifficultyBase} from "../shared/enums/DifficultyBase";
+import {AddAccountRouteCompetition} from '../shared/formData/AddAccountRouteCompetition';
 
 @Component({
   selector: 'app-competitionroutes',
@@ -43,11 +44,12 @@ export class CompetitionroutesComponent implements OnInit {
 
   }
 
-  climbingTry(routeId: number, zone: number) {
+  climbingTry(routeId: number, zone: number, competitionId: number) {
     console.log(routeId + ',' + zone);
     this.email = firebase.auth().currentUser.email;
-    this.addAccountRoute = new AddAccountRoute(this.email, routeId, zone);
-    this.accountRouteService.save(this.addAccountRoute);
+    this.addAccountRoute = new AddAccountRouteCompetition(this.email, routeId, zone, competitionId);
+    console.log(this.addAccountRoute);
+    this.accountRouteService.createAccountRouteCompetition(this.addAccountRoute);
   }
 
   private wsSubscribe() {

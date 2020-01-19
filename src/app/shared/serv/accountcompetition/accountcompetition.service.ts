@@ -24,7 +24,7 @@ export class AccountcompetitionService {
     this.http.post<AddAccountCompetition>(this.source, body, options).subscribe();
   }
 
-  getById(id: number): Observable<AccountCompetition[]> {
+  getAccountCompetitionsById(id: number): Observable<AccountCompetition[]> {
     return this.http.get<AccountCompetition[]>(this.source + '/' + id);
   }
 

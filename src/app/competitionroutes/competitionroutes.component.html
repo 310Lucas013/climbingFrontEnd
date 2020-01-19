@@ -4,10 +4,10 @@
       <h2 class="title">{{CompRoute.route.name}}</h2>
       <p>
         <span>Zone Reached: </span>
-        <span class="spacing" (click)="climbingTry(CompRoute.route.id, 1)">Zone 1</span>
-        <span class="spacing" (click)="climbingTry(CompRoute.route.id, 2)">Zone 2</span>
-        <span class="spacing" (click)="climbingTry(CompRoute.route.id, 3)">Zone 3</span>
-        <span class="spacing" (click)="climbingTry(CompRoute.route.id, 4)">Top</span>
+        <span class="spacing" (click)="climbingTry(CompRoute.route.id, 1, CompRoute.competition.id)">Zone 1</span>
+        <span class="spacing" (click)="climbingTry(CompRoute.route.id, 2, CompRoute.competition.id)">Zone 2</span>
+        <span class="spacing" (click)="climbingTry(CompRoute.route.id, 3, CompRoute.competition.id)">Zone 3</span>
+        <span class="spacing" (click)="climbingTry(CompRoute.route.id, 4, CompRoute.competition.id)">Top</span>
       </p>
       <p>
         <span>Route Difficulty:</span>

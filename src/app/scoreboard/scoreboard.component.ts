@@ -19,7 +19,7 @@ export class ScoreboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getAccountCompetitions().subscribe(data => {
+    this.service.getAccountCompetitionsById(this.id).subscribe(data => {
       console.log(data);
       this.participants = data;
       console.log(this.participants);

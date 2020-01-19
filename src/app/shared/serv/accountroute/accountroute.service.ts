@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {AddAccountCompetition} from '../../formData/AddAccountCompetition';
 import {AddAccountRoute} from '../../formData/AddAccountRoute';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +21,14 @@ export class AccountrouteService {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
     this.http.post<AddAccountCompetition>(this.source, body, options).subscribe();
+  }
+
+  createAccountRouteCompetition(addAccountRoute: AddAccountRoute) {
+    const body = JSON.stringify(addAccountRoute);
+    const options = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+    this.http.post<AddAccountCompetition>(this.source + '/competition', body, options).subscribe();
   }
 
   getAccountRouteCountByEmail(email: string): Observable<number> {
