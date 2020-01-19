@@ -6,7 +6,6 @@ pipeline {
         sh '''
         node --version
         npm --version
-        install nodejs
         npm install'''
       }
     }
