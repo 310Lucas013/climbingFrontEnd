@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('Initialize') {
       steps {
+        sh 'install nodejs'
         sh 'npm install'
       }
     }
