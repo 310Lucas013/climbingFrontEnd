@@ -62,7 +62,7 @@ export class CompetitionroutesComponent implements OnInit {
     this.addAccountRoute = new AddAccountRouteCompetition(this.email, routeId, zone, competitionId);
     console.log(this.addAccountRoute);
     this.sendMessage(this.addAccountRoute);
-    this.accountRouteService.createAccountRouteCompetition(this.addAccountRoute);
+    // this.accountRouteService.createAccountRouteCompetition(this.addAccountRoute);
   }
 
   // private wsSubscribe() {
@@ -129,18 +129,32 @@ export class CompetitionroutesComponent implements OnInit {
     this.stompClient = Stomp.over(ws);
     // const that = this;
     this.stompClient.connect({}, frame => {
-      this.stompClient.subscribe('/topic/queue', (message) => {
+      this.stompClient.heartbeat.outgoing = 20000;
+      this.stompClient.heartbeat.incoming = 0;
+      console.log(frame);
+      this.stompClient.subscribe('/topic/send', message =>  {
         console.log('succes');
         if (message.body) {
           // $('.chat').append('<div class=\'message\'>' + message.body + '</div>');
-          console.log(message.body);
+          console.log(JSON.parse(message.body).content);
         }
       });
+
+      this.stompClient.subscribe('/topic/error', message =>  {
+        console.log('error');
+        if (message.body) {
+          // $('.chat').append('<div class=\'message\'>' + message.body + '</div>');
+          console.log(JSON.parse(message.body).content);
+        }
+      });
+
+      // this.stompClient.send('/app/send', {}, 'body');
     });
   }
 
   sendMessage(message) {
-    this.stompClient.send('/send/message', {}, message);
+    const body = JSON.stringify(message);
+    this.stompClient.send('/app/send', {}, body);
     // $('#input').val('');
     // todo look for way to send uid so the message contains a username
   }
